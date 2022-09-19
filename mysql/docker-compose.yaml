@@ -1,0 +1,19 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: insur132
+    ports:
+      - 3306:3306
+    volumes:
+      - '$PWD/mysql-data/lib:/var/lib/mysql'
+      - '$PWD/mysql-data/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysql.cnf'
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+       pub:
+          ipv4_address: 172.20.10.1
