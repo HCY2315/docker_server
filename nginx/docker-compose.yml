@@ -1,0 +1,17 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+ nginx:
+  image: nginx
+  restart: always
+  ports:
+    -  80:80
+  volumes:
+    - $PWD/html:/usr/share/nginx/html
+    - $PWD/conf:/etc/nginx/conf.d/
+    - $PWD/log:/var/log/nginx/
+  networks:
+     pub:
+        ipv4_address: 172.20.0.41
