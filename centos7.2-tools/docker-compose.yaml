@@ -1,0 +1,7 @@
+version: "2"
+services:
+   centos7:
+      image: hub.c.163.com/public/centos:7.2-tools
+      restart: always
+      volumes:
+        - $PWD/sh:/aa

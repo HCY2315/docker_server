@@ -1,0 +1,13 @@
+version: '2'
+services:
+  host1:
+    image: host:v2
+    restart: always
+    volumes:
+      - ./host1-data:/data
+  host2:
+    image: host:v2
+    restart: always
+  host3:
+    image: host:v2
+    restart: always

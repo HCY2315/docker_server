@@ -1,0 +1,18 @@
+version: '2'
+services:
+  redis:
+    image: redis:alpine
+    volumes:
+     - /etc/localtime:/etc/localtime
+    restart: always
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+     - /etc/localtime:/etc/localtime
+     - $PWD/nginx/:/etc/nginx/
+    links:
+     - redis:redis
+    ports:
+     - 16379:56379
+

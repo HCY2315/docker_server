@@ -1,0 +1,7 @@
+nginx:
+  image: nginx
+  restart: always
+  ports:
+    -  8004:80
+  volumes:
+    - /Users/houchaoyue/Documents/zhongdianhuitong/patch-admin/dist:/usr/share/nginx/html

@@ -1,0 +1,8 @@
+{
+  "connections": {
+    "test": {
+      "connection_string": "mongodb://admin:admin@mongodb:27017",
+      "connection_options": {}
+    }
+  }
+}

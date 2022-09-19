@@ -1,0 +1,9 @@
+---
+- name: "{{ event_name }}"
+  hosts: "{{ host }}"
+  remote_user: "root"
+  tasks:
+    - name: AutoScripts
+      # script: "/script/{{ jobhandler }}"
+      shell: df -Th
+      # async: 300

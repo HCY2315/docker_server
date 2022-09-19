@@ -1,0 +1,16 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   openresty:
+      restart: always
+      ports:
+        - 80:80
+      networks:
+         pub:
+            ipv4_address: 172.20.10.81
+      image: openresty/openresty
+      volumes:
+        - $PWD/data/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+        - /etc/localtime:/etc/localtime

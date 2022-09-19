@@ -1,0 +1,123 @@
+[client]
+# 对本地的mysql客户端的配置
+default-character-set = utf8
+# 对其他远程连接的mysql客户端的配置
+[mysql]
+default-character-set = utf8
+
+# 本地mysql服务的配置
+[mysqld]
+init_connect='SET collation_connection = utf8_unicode_ci'
+init_connect='SET NAMES utf8'
+character-set-server=utf8
+collation-server=utf8_unicode_ci
+skip-character-set-client-handshake
+skip-name-resolve
+lower_case_table_names=1
+max_connections = 1000
+open_files_limit    = 65536
+
+skip-grant-tables
+
+#Mysql服务的唯一编号 每个mysql服务Id需唯一
+server-id = 155
+
+
+#在MySQL暂时停止响应新请求之前的短时间内多少个请求可以被存在堆栈中
+back_log = 1024
+max_connect_errors = 1000000
+#表描述符缓存大小，可减少文件打开/关闭次数
+table_open_cache = 1024
+table_definition_cache = 1024
+#涉及到锁
+table_open_cache_instances = 64
+#线程缓存；主要用来存放每一个线程自身的标识信息，如线程id，线程运行时基本信息等等，我们可以通过 thread_stack 参数来设置为每一个线程栈分配多大的内存。
+thread_stack = 512K
+#跳过外部锁定;External-locking用于多进程条件下为MyISAM数据表进行锁定
+external-locking = FALSE
+#这个值来限制server接受的数据包大小。有时候大的插入和更新会受max_allowed_packet 参数限制，导致写入或者更新失败。
+max_allowed_packet = 32M
+#是MySQL执行排序使用的缓冲大小。
+sort_buffer_size = 16M
+#应用程序经常会出现一些两表（或多表）Join的操作需求，MySQL在完成某些 Join 需求的时候（all/index join），为了减少参与Join的“被驱动表”的
+#读取次数以提高性能，需要使用到 Join Buffer 来协助完成 Join操作。当 Join Buffer 太小，MySQL 不会将该 Buffer 存入磁盘文件， #而是先将Join Buffer中的结果集与需要 Join 的表进行 Join 操作， #然后清空 Join Buffer 中的数据，继续将剩余的结果集写入此 Buffer 中，如此往复。这势必会造成被驱动表需要被多次读取，成倍增加 IO 访问，降低效率。
+join_buffer_size = 16M
+#thread_cahe_size线程池，线程缓存。用来缓存空闲的线程，以至于不被销毁，如果线程缓存在的空闲线程，需要重新建立新连接，
+#则会优先调用线程池中的缓存，很快就能响应连接请求。每建立一个连接，都需要一个线程与之匹配。
+thread_cache_size = 768
+#工作原理： 一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。
+#在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建系把该功能禁掉。
+query_cache_size = 0
+#决定是否缓存查询结果。这个变量有三个取值：0,1,2，分别代表了off、on、demand。
+query_cache_type = 0
+#interactive_time -- 指的是mysql在关闭一个交互的连接之前所要等待的秒数(交互连接如mysql gui tool中的连接）
+interactive_timeout = 100
+#wait_timeout -- 指的是MySQL在关闭一个非交互的连接之前所要等待的秒数
+wait_timeout = 100
+#它规定了内部内存临时表的最大值，每个线程都要分配。（实际起限制作用的是tmp_table_size和max_heap_table_size的最小值。）
+#如果内存临时表超出了限制，MySQL就会自动地把它转化为基于磁盘的MyISAM表，存储在指定的tmpdir目录下
+tmp_table_size = 96M
+#独立的内存表所允许的最大容量.# 此选项为了防止意外创建一个超大的内存表导致永尽所有的内存资源.
+max_heap_table_size = 96M
+
+#开启mysql binlog功能
+#log-bin = /logs/mybinlog
+#sync_binlog=n，当每进行n次事务提交之后，MySQL将进行一次fsync之类的磁盘同步指令来将binlog_cache中的数据强制写入磁盘。
+sync_binlog = 1
+#mysql binlog日志文件保存的过期时间，过期后自动删除
+expire_logs_days = 7
+#binlog记录内容的方式，记录被操作的每一行
+binlog_format = row
+#二进制日志缓冲大小
+#我们知道InnoDB存储引擎是支持事务的，实现事务需要依赖于日志技术，为了性能，日志编码采用二进制格式。那么，我们如何记日志呢？有日志的时候，就直接写磁盘？
+#可是磁盘的效率是很低的，如果你用过Nginx，，一般Nginx输出access log都是要缓冲输出的。因此，记录二进制日志的时候，我们是否也需要考虑Cache呢？
+#答案是肯定的，但是Cache不是直接持久化，于是面临安全性的问题——因为系统宕机时，Cache中可能有残余的数据没来得及写入磁盘。因此，Cache要权衡，要恰到好处：
+#既减少磁盘I/O，满足性能要求；又保证Cache无残留，及时持久化，满足安全要求。
+binlog_cache_size = 4M
+# 为每个session 最大可分配的内存，在事务过程中用来存储二进制日志的缓存。
+max_binlog_cache_size = 2G
+#如果二进制日志写入的内容超出给定值，日志就会发生滚动。你不能将该变量设置为大于1GB或小于4096字节。 默认值是1GB。
+max_binlog_size = 1G
+
+#索引块的缓冲区大小，对MyISAM表性能影响最大的一个参数.决定索引处理的速度，尤其是索引读的速度。默认值是16M，通过检查状态值Key_read_requests
+#和Key_reads，可以知道key_buffer_size设置是否合理
+key_buffer_size = 32M
+#是MySQL读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySQL会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。
+#如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。
+read_buffer_size = 8M
+#是MySQL的随机读缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySQL会首先扫描一遍该缓冲，以避免磁盘搜索，
+#提高查询速度，如果需要排序大量数据，可适当调高该值。但MySQL会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。
+read_rnd_buffer_size = 16M
+#默认8M，当对MyISAM非空表执行insert … select/ insert … values(…),(…)或者load data infile时，使用树状cache缓存数据，每个thread分配一个；
+#注：当对MyISAM表load 大文件时，调大　bulk_insert_buffer_size/myisam_sort_buffer_size/key_buffer_size会极大提升速度
+bulk_insert_buffer_size = 64M
+#当对MyISAM表执行repair table或创建索引时，用以缓存排序索引；设置太小时可能会遇到” myisam_sort_buffer_size is too small”
+myisam_sort_buffer_size = 128M
+myisam_max_sort_file_size = 20G
+myisam_repair_threads = 1
+
+#在回滚(rooled back)之前，InnoDB 事务将等待超时的时间(单位 秒)
+lock_wait_timeout = 3600
+#明确时间戳默认null方式
+explicit_defaults_for_timestamp = 1
+#通过设置配置参数innodb_thread_concurrency来限制并发线程的数量，
+#一旦执行线程的数量达到这个限制，额外的线程在被放置到对队列中之前，会睡眠数微秒，
+#可以通过设定参数innodb_thread_sleep_delay来配置睡眠时间
+#该值默认为0,在官方doc上，对于innodb_thread_concurrency的使用，也给出了一些建议:
+#(1)如果一个工作负载中，并发用户线程的数量小于64，建议设置innodb_thread_concurrency=0；
+#(2)如果工作负载一直较为严重甚至偶尔达到顶峰，建议先设置innodb_thread_concurrency=128,
+###并通过不断的降低这个参数，96, 80, 64等等，直到发现能够提供最佳性能的线程数
+innodb_thread_concurrency = 0
+innodb_sync_spin_loops = 100
+innodb_spin_wait_delay = 30
+
+#事务隔离级别，默认为可重复读，mysql默认可重复读级别（此级别下可能参数很多间隙锁，影响性能）
+transaction_isolation = READ-COMMITTED
+#innodb_additional_mem_pool_size = 16M
+#InnoDB 用来高速缓冲数据和索引内存缓冲大小。 更大的设置可以使访问数据时减少磁盘 I/O。
+innodb_buffer_pool_size = 12697M
+#263566016/1024/1024*0.7*1024
+#innodb_buffer_pool_size 一致 可以开启多个内存缓冲池，把需要缓冲的数据hash到不同的缓冲池中，这样可以并行的内存读写。
+innodb_buffer_pool_instances = 8
+innodb_buffer_pool_load_at_startup = 1
+innodb_buffer_pool_dump_at_shutdown = 1

@@ -1,0 +1,11 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   c1:
+      restart: always
+      networks:
+         pub:
+            ipv4_address: 172.20.0.1
+      image:

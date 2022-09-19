@@ -1,0 +1,19 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   c1:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.1
+   c2:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.2

@@ -1,0 +1,17 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+  webjenkins:
+    container_name: jenkins
+    image: 'jenkins/jenkins:lts'
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - '9083:8080'
+      - '50001:50000'
+    networks:
+       pub:
+          ipv4_address: 172.20.10.61

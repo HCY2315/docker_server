@@ -1,0 +1,21 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+  ansible-api:
+    image: ansible-api:base_v1
+    ports: 
+      - 8000:80
+    restart: always 
+    networks:
+       pub:
+          ipv4_address: 172.20.10.91
+
+  mission-worker:
+    image: mission-worker:base_v1
+    restart: always 
+    networks:
+       pub:
+          ipv4_address: 172.20.10.92
+

@@ -1,0 +1,18 @@
+version: "2"
+networks:
+  pub:
+    external: true
+services:
+   rabbitmq:
+      image: rabbitmq:3.7-management
+      restart: always
+      ports: 
+        - "15672:15672"
+        - "5672:5672"
+      volumes:
+        - $PWD/data/:/var/lib/rabbitmq/
+        - $PWD/log/:/var/log/rabbitmq/
+          #      privileged: true  //设置容器的权限为root
+      networks:
+         pub:
+            ipv4_address: 172.20.10.31

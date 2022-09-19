@@ -1,0 +1,24 @@
+version: "2"
+services:
+  nginx:
+    image: nginx_yum:v3
+    ports:
+      - 8834:80
+    restart: always
+    volumes:
+      - /Users/houchaoyue/docker-project/yum_source/nginx_data/html:/usr/share/nginx/html
+      - /Users/houchaoyue/docker-project/yum_source/nginx_data/log/nginx:/var/log/nginx
+
+#  centos7:
+#    image: centos_source:v3
+#    restart: always
+#    volumes:
+#      -  /Users/houchaoyue/docker-project/yum_source/nginx_data/html/centos/7:/mirror
+#      -  /Users/houchaoyue/docker-project/yum_source/nginx_data/log/centos/7:/var/log/
+#
+#  centos6:
+#    image: centos6_source:v1
+#    restart: always
+#    volumes:
+#      -  /Users/houchaoyue/docker-project/yum_source/nginx_data/html/centos/6:/mirror
+#      -  /Users/houchaoyue/docker-project/yum_source/nginx_data/log/centos/6:/var/log/

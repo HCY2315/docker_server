@@ -1,0 +1,74 @@
+2021-11-17 17:01:10,928 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: name 'rs_password' is not defined
+ 
+ -------------- celery@0ce69986870d v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2021-11-17 17:01:11
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f5343490850
+- ** ---------- .> transport:   redis://redis:6379/0
+- ** ---------- .> results:     redis://redis:6379/2
+- *** --- * --- .> concurrency: 4 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+2021-11-17 17:04:13,061 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: name 'rs_password' is not defined
+ 
+ -------------- celery@8c9a61d6eaac v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2021-11-17 17:04:13
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f1fa3bd53a0
+- ** ---------- .> transport:   redis://redis:6379/0
+- ** ---------- .> results:     redis://redis:6379/2
+- *** --- * --- .> concurrency: 4 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+2021-11-18 16:46:07,757 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: AUTH <password> called without any password configured for the default user. Are you sure your configuration is correct?
+ 
+ -------------- celery@0a218d496bd7 v5.2.1 (dawn-chorus)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2021-11-18 16:46:08
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f408db6fc10
+- ** ---------- .> transport:   redis://:**@redis:6379/0
+- ** ---------- .> results:     redis://:**@redis:6379/2
+- *** --- * --- .> concurrency: 4 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+2021-11-19 09:37:43,771 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: AUTH <password> called without any password configured for the default user. Are you sure your configuration is correct?
+ 
+ -------------- celery@aa34eaa7127a v5.2.1 (dawn-chorus)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2021-11-19 09:37:44
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f180b7c0c40
+- ** ---------- .> transport:   redis://:**@redis:6379/0
+- ** ---------- .> results:     redis://:**@redis:6379/2
+- *** --- * --- .> concurrency: 4 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+2021-11-19 09:40:48,748 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+2021-11-19 09:40:53,782 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+2021-11-19 09:40:58,814 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+2021-11-19 09:41:03,845 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+2021-11-19 09:44:01,145 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+2021-11-19 09:44:07,193 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'

@@ -1,0 +1,30 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+  redis:
+    restart: always
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - $PWD/redis-data/:/data/
+#    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
+#    command: ["redis-server"]
+    networks:
+      pub:
+        ipv4_address: 172.20.10.11
+#  phpredisadmin:
+#    depends_on:
+#      - redis
+#    image: erikdubbelboer/phpredisadmin
+#    container_name: phpredisadmin
+#    restart: always
+#    environment:
+#      - ADMIN_USER=admin
+#      - ADMIN_PASS=pass
+#      - REDIS_1_HOST=redis
+#      - REDIS_1_PORT=6379
+#    ports:
+#      - "8082:80"

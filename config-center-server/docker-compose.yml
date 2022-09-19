@@ -1,0 +1,89 @@
+version: '2'
+services:
+  config-center-server:
+    restart: always
+    image: config_center_server:v1.1
+    container_name: config_center_server
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: config-center
+      MYSQL_PASSWD: ${MYSQL_PASSWD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_CHARSET: utf8mb4
+      REDIS_HOST: redis
+      REDIS_PORT: ${REDIS_PORT}
+    volumes:
+      - ./config-center-server/logs:/ccs/logs/
+      - ./config-center-server/config/:/ccs/config/
+      - ./config-center-server/scripts:/ccs/scripts/
+    ports:
+      - 8321:8701
+    depends_on:
+      - mysql
+      - redis
+      - apollo-portal
+
+  mysql:
+    restart: always
+    image: mysql
+    container_name: ccs_mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysql/conf:/etc/mysql
+      - ./mysql/lib:/var/lib/mysql
+    ports:
+        - 37306:${MYSQL_PORT}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWD}
+
+  redis:
+    restart: always
+    image: redis:latest
+    container_name: ccs_redis
+    ports:
+        - 37379:${REDIS_PORT}
+    command: redis-server #--requirepass 1234
+    volumes:
+        - ./redis/data:/data
+
+  apollo-adminservice:
+    image: registry.cestong.com:8150/cecf/apollo-adminservice:latest
+    container_name: ccs_apollo_adminservice
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:${MYSQL_PORT}/ApolloConfigDB?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWD}
+    volumes:
+      - ./adminservice/logs:/opt/logs
+    depends_on:
+      - mysql
+      - apollo-configservice
+  apollo-configservice:
+    image: registry.cestong.com:8150/cecf/apollo-configservice:latest
+    container_name: ccs_apollo_configservice
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:${MYSQL_PORT}/ApolloConfigDB?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWD}
+    volumes:
+      - ./configservice/logs:/opt/logs
+    depends_on:
+      - mysql
+  apollo-portal:
+    image: registry.cestong.com:8150/cecf/apollo-portal:latest
+    container_name: ccs_apollo_portal
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:${MYSQL_PORT}/ApolloPortalDB?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWD}
+      - APOLLO_PORTAL_ENVS=dev
+      - DEV_META=http://apollo-configservice:8080
+    ports:
+      - 8310:8070
+    volumes:
+      - ./portal/logs:/opt/logs
+    depends_on:
+      - apollo-configservice
+      - apollo-adminservice
+      - mysql

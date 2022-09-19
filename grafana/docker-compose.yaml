@@ -1,0 +1,14 @@
+version: "2"
+networks:
+  pub:
+    external: true
+services:
+  grafana:
+    image: bitnami/grafana
+    ports:
+      - '3000:3000'
+    volumes:
+      - '$PWD/grafana:/opt/bitnami/grafana'
+    networks:
+       pub:
+          ipv4_address: 172.20.10.71

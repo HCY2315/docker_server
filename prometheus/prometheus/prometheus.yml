@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+  - job_name: 'linux-exporter'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['8.141.145.204:8490']
+

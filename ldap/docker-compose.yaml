@@ -1,0 +1,24 @@
+version: "2"
+services:
+  ldap-openldap:
+    container_name: ldap-openldap
+    image: dinkel/openldap
+    restart: always
+    ports:
+      - "389:389"
+    environment:
+      - SLAPD_PASSWORD=pwd@123
+      - SLAPD_DOMAIN=manager.cestong.com
+    volumes:
+      - $PWD/ldap/db:/var/lib/ldap
+      - $PWD/ldap/config:/etc/ldap
+  ldap-phpldapadmin:
+    container_name: ldap-phpldapadmin
+    image: dinkel/phpldapadmin
+    restart: always
+    ports:
+      - "8083:80"
+    environment:
+      - LDAP_SERVER_HOST=ldap-openldap
+# 用户：cn=admin,dc=manager,dc=cestong,dc=com
+# 密码：pwd@123

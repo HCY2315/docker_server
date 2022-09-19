@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:4.4.10
+    restart: always
+    volumes:
+      - /Users/houchaoyue/docker-project/mongodb/db:/data/db
+      - /Users/houchaoyue/docker-project/mongodb/log:/var/log/mongodb
+      - $PWD/conf/mongod.conf.orig:/etc/mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+#  admin-mongo:
+#    image: fourfire/admin-mongo
+#    restart: always
+#    volumes:
+#      - $PWD/admin-config:/home/admin-mongo/config/
+#    ports:
+#      - 8101:1234
+#  node12:
+#    image: 22fdca4bf010
+#    volumes:
+#      - /Users/houchaoyue/Documents/github/nodercms:/root
+#    ports:
+#      - 3000:3000
+#  mongo-express:
+#    image: mongo-express
+#    restart: always
+#    ports:
+#      - 8081:8081
+#    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+#      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongodb:27017
+
+# default login config
+# "username":"admin",
+# "password":"admin1234"
+

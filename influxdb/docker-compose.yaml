@@ -1,0 +1,55 @@
+version: '2'
+   
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    restart: always
+    ports:
+      - "8086:8086"
+    volumes:
+      - $PWD/influxdb:/var/lib/influxdb
+      - $PWD/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    # configs:
+    #   - source: influxdb
+    #     target: /etc/influxdb/influxdb.conf
+    networks:
+      - net-db
+       
+#  chronograf:
+#    container_name: chronograf
+#    image: chronograf
+#    restart: always
+#    ports:
+#      - "8888:8888"
+#    volumes:
+#      - $PWD/chronograf:/var/lib/chronograf
+#    networks:
+#      - net-db
+# 
+#  telegraf:
+#    container_name: telegraf
+#    image: telegraf
+#    restart: always
+#    volumes:
+#      - $PWD/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+#    networks:
+#      - net-db
+#       
+#  kapacitor:
+#    container_name: kapacitor
+#    image: kapacitor
+#    restart: always
+#    ports:
+#      - "9092:9092"
+#    volumes:
+#      - $PWD/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+#    networks:
+#      - net-db
+# 
+networks:
+  net-db:
+
+#configs:
+#  influxdb:
+#    external: true

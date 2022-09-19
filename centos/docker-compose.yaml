@@ -1,0 +1,7 @@
+version: "2"
+services:
+   centos:
+      image: hub.c.163.com/public/centos:7.2-tools
+      volumes:
+       - $PWD:/root 
+

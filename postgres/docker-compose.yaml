@@ -1,0 +1,20 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4
+    container_name: pg
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - $PWD/pgsql-data:/var/lib/postgresql/data
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=test@123.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      -  "5433:80"
