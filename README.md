@@ -25,8 +25,11 @@
 # openresty
 172.20.10.81-90/16
 
-# ansible-api、mission-worker
+# ansibler
 172.20.10.91-100/16
+
+# ansible-api、mission-worker
+172.20.10.101-110/16
 
 # host
 172.20.0.1-253/16

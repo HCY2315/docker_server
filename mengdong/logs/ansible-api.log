@@ -4706,3 +4706,25 @@
 2021-11-19 11:04:06,908 - _internal.py[line:225] - INFO:  * Restarting with stat
 2021-11-19 11:04:07,611 - _internal.py[line:225] - WARNING:  * Debugger is active!
 2021-11-19 11:04:07,623 - _internal.py[line:225] - INFO:  * Debugger PIN: 213-975-584
+ * Serving Flask app 'ansible_api' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+2022-09-20 09:56:58,492 - _internal.py[line:225] - WARNING:  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-09-20 09:56:58,494 - _internal.py[line:225] - INFO:  * Running on http://172.19.0.2:80/ (Press CTRL+C to quit)
+2022-09-20 09:56:58,497 - _internal.py[line:225] - INFO:  * Restarting with stat
+2022-09-20 09:56:59,000 - _internal.py[line:225] - WARNING:  * Debugger is active!
+2022-09-20 09:56:59,018 - _internal.py[line:225] - INFO:  * Debugger PIN: 677-963-962
+ * Serving Flask app 'ansible_api' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+2022-09-20 10:08:22,850 - _internal.py[line:225] - WARNING:  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-09-20 10:08:22,851 - _internal.py[line:225] - INFO:  * Running on http://172.20.10.101:80/ (Press CTRL+C to quit)
+2022-09-20 10:08:22,853 - _internal.py[line:225] - INFO:  * Restarting with stat
+2022-09-20 10:08:23,421 - _internal.py[line:225] - WARNING:  * Debugger is active!
+2022-09-20 10:08:23,431 - _internal.py[line:225] - INFO:  * Debugger PIN: 141-308-710

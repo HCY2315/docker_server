@@ -72,3 +72,69 @@
 2021-11-19 09:41:03,845 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
 2021-11-19 09:44:01,145 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
 2021-11-19 09:44:07,193 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+ 
+ -------------- celery@80aebca4b963 v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2022-09-20 09:55:59
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f48c9f44fa0
+- ** ---------- .> transport:   redis://:**@172.20.10.11:6379/0
+- ** ---------- .> results:     redis://:**@172.20.10.11:6379/2
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+ 
+ -------------- celery@2b7bbf7c5a03 v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2022-09-20 09:56:58
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f3b4f8b04f0
+- ** ---------- .> transport:   redis://:**@172.20.10.11:6379/0
+- ** ---------- .> results:     redis://:**@172.20.10.11:6379/2
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+2022-09-20 09:59:07,228 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: Error 110 connecting to 172.20.10.11:6379. Operation timed out.
+2022-09-20 10:07:44,837 - tocelery.py[line:80] - ERROR: add redis_mission_id to redis_celert failed, err: 'missiontype_id'
+ 
+ -------------- celery@2b8c90190dce v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2022-09-20 10:07:45
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7fa4d7cb4dc0
+- ** ---------- .> transport:   redis://:**@172.20.10.11:6379/0
+- ** ---------- .> results:     redis://:**@172.20.10.11:6379/2
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+ 
+ -------------- celery@3b96f5c35d57 v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.10.47-linuxkit-x86_64-with 2022-09-20 10:08:23
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         autotask:0x7f35aa0b2760
+- ** ---------- .> transport:   redis://:**@172.20.10.11:6379/0
+- ** ---------- .> results:     redis://:**@172.20.10.11:6379/2
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+

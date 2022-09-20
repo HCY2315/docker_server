@@ -1,16 +1,19 @@
 version: '2'
+networks:
+  pub:
+    external: true
 services:
   ansible-api:
     restart: always
-    image: ansible-api:test
+    image: ansible-api:prod
     environment:
-      MYSQL_HOST: db
+      MYSQL_HOST: 172.20.10.1
       MYSQL_USER: root
       MYSQL_DATABASE: md-admin
       MYSQL_PASSWD: insur132
       MYSQL_PORT: 3306
       MYSQL_CHARSET: utf8mb4
-      REDIS_HOST: redis
+      REDIS_HOST: 172.20.10.11
       REDIS_PORT: 6379
       REDIS_PASSWD: 123456
     ports:
@@ -21,21 +24,21 @@ services:
       - $PWD/script:/script
       - /Users/houchaoyue/Documents/zhongdianhuitong/ansible-worker-service:/ansible
       - $PWD/playbook:/playbook
-    links:
-      - redis
-      - db
+    networks:
+       pub:
+          ipv4_address: 172.20.10.101
 
   mission:
     restart: always
-    image: mission-worker:test
+    image: mission-worker:prod
     environment:
-      MYSQL_HOST: db
+      MYSQL_HOST: 172.20.10.1
       MYSQL_USER: root
       MYSQL_DATABASE: md-admin
       MYSQL_PASSWD: insur132
       MYSQL_PORT: 3306
       MYSQL_CHARSET: utf8mb4
-      REDIS_HOST: redis
+      REDIS_HOST: 172.20.10.11
       REDIS_PORT: 6379
       REDIS_PASSWD: 123456
       ANSIBLE_API: ansible-api:80
@@ -45,21 +48,7 @@ services:
       - /Users/houchaoyue/Documents/zhongdianhuitong/ansible-worker-service:/converter
     ports:
       - 5555:5555
-    links:
-      - redis
-      - ansible-api
-      - db
-
-  redis:
-    restart: always
-    image: redis:alpine
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: insur132
-    volumes:
-      - '/Users/houchaoyue/docker-project/mysql/mysql-data/lib:/var/lib/mysql'
-      - '/Users/houchaoyue/docker-project/mysql/mysql-data/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysql.cnf'
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+       pub:
+          ipv4_address: 172.20.10.102
 
