@@ -14,4 +14,4 @@ services:
     - $PWD/log:/var/log/nginx/
   networks:
      pub:
-        ipv4_address: 172.20.0.41
+        ipv4_address: 172.20.10.41
