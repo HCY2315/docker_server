@@ -31,7 +31,24 @@
 # host
 172.20.0.1-253/16
 
-# docker network 
+# network
+## create  docker network for subnet
+
 ```docker
 docker network create -d bridge --gateway 172.20.0.254 --subnet 172.20.0.0/16 pub
+```
+
+## example yaml
+```docker
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   c1:
+      restart: always
+      networks:
+         pub:
+            ipv4_address: 172.20.0.1
+      image:
 ```
