@@ -34,8 +34,15 @@
 # influxdb
 172.20.10.111-120/16
 
-# host
+# hostByTesting
 172.20.0.1-253/16
+
+
+#--------------- other platform ---------------
+```text
+1、ip range：172.20.100.1 开始
+2、IP地址维护的力度比公共服务小
+```
 
 # network
 ## create  docker network for subnet
