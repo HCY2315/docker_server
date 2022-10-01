@@ -1,50 +1,58 @@
-# mysql
+# 一、public server
+## 1、mysql
 172.20.10.1-10/16
 
-# redis
+## 2、redis、phpredisadmin
 172.20.10.11-20/16
 
-# tomcat
+## 3、tomcat
 172.20.10.21-30/16
 
-# rabbitmq
+## 4、rabbitmq
 172.20.10.31-40/16
 
-# nginx
+## 5、nginx
 172.20.10.41-50/16
 
-# prometheus
+## 6、prometheus
 172.20.10.51-60/16
 
-# jenkins
+## 7、jenkins
 172.20.10.61-70/16
 
-# grafana
+## 8、grafana
 172.20.10.71-80/16
 
-# openresty
+## 9、openresty
 172.20.10.81-90/16
 
-# ansibler
+## 10、ansibler
 172.20.10.91-100/16
 
-# ansible-api、mission-worker
+## 11、ansible-api、mission-worker
 172.20.10.101-110/16
 
-# influxdb
+## 12、influxdb
 172.20.10.111-120/16
 
-# host
+## 13、hostByTesting
 172.20.0.1-253/16
 
-# network
-## create  docker network for subnet
+
+# 二、other server
+```text
+1、ip range：172.20.100.1 开始
+2、IP地址维护的力度比公共服务小
+```
+
+# 三、network
+## 1、create  docker network for subnet
 
 ```docker
 docker network create -d bridge --gateway 172.20.0.254 --subnet 172.20.0.0/16 pub
 ```
 
-## example yaml
+## 2、example yaml
 ```docker
 version: '2'
 networks:
