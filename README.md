@@ -1,7 +1,7 @@
 # mysql
 172.20.10.1-10/16
 
-# redis
+# redis、phpredisadmin
 172.20.10.11-20/16
 
 # tomcat
