@@ -13,7 +13,7 @@ port = 10280
 [[server]]
 title = "本地etcd"
 name = "local"
-address = ["etcd:2379"]
+address = ["172.20.10.121:2379"]
 key_prefix = "/"
 desc = "本机环境"
 roles = ["admin"]

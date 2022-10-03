@@ -1,15 +1,22 @@
 version: '2.2'
+networks:
+  pub:
+    external: true
 services:
   etcd:
+    networks:
+       pub:
+          ipv4_address: 172.20.10.121
+    image:
     image: quay.io/coreos/etcd:v3.3.12
     container_name: etcd-v3
-    ports:
-      - 2379:2379
-      - 2380:2380
+    #    ports:
+    #      - 2379:2379
+    #      - 2380:2380
     environment:
       ETCDCTL_API: 3
     volumes:
-      - /Users/houchaoyue/docker-project/etcd/etcd-data:/etcd-data
+      - $PWD/etcd-data:/etcd-data
     command:
       - "/usr/local/bin/etcd"
       - "--name"
@@ -33,14 +40,18 @@ services:
 #etcd_v3版本使用
   etcd-manage:
     #build: .
-    image: etcd-manager:v1
+    #image: etcd-manager:v1
+    image: shiguanghuxian/etcd-manage:1
     volumes:
       - ./bin/config/cfg.toml:/app/config/cfg.toml
       - ./bin/logs:/app/logs
-    ports:
-      - "10280:10280"
-    depends_on:
-      - etcd
+        #    ports:
+        #      - "40280:10280"
+        #    depends_on:
+        #      - etcd
+    networks:
+       pub:
+          ipv4_address: 172.20.10.122
 #etcd_v2版本使用
 #  etcd-browser:
 #    image: buddho/etcd-browser
