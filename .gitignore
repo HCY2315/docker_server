@@ -17,5 +17,6 @@ influxdb/idata/
 influxdb/influxdb/data
 influxdb/influxdb/meta
 influxdb/influxdb/wal
-etcd/bin/logs
-etcd/etcd-data
+etcd/bin/logs/
+etcd/etcd-data/
+
