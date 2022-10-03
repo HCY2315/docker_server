@@ -12,7 +12,10 @@ prometheus/prometheus_data
 neo4j
 mongodb/db/
 elk/
-etcd
 influxdb/chronograf
 influxdb/idata/
-influxdb/influxdb
+influxdb/influxdb/data
+influxdb/influxdb/meta
+influxdb/influxdb/wal
+etcd/bin/logs
+etcd/etcd-data
