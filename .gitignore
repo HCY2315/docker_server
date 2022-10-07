@@ -19,4 +19,4 @@ influxdb/influxdb/meta
 influxdb/influxdb/wal
 etcd/bin/logs/
 etcd/etcd-data/
-
+influxdb/chronograf/
