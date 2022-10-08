@@ -1,0 +1,14 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   c1:
+      image: houchaoyue/deployment:1.18.5
+      restart: always
+      tty: true
+      volumes:
+        - $PWD/pkg:/mnt
+      networks:
+         pub:
+            ipv4_address: 172.20.10.131
