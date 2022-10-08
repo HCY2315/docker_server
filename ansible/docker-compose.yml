@@ -5,9 +5,12 @@ networks:
 services:
   ansible-api:
     image: ansible-api:prod
-    ports: 
-      - 8000:80
+    #    ports: 
+    #      - 8000:80
     restart: always 
+    volumes:
+            - $PWD/playbook:/playbook
+            - $PWD/script:/script
     networks:
        pub:
           ipv4_address: 172.20.10.91
