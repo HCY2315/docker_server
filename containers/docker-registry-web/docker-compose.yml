@@ -10,5 +10,5 @@ services:
       #- ./certs/frontend.crt:/etc/apache2/server.crt:ro
       #- ./certs/frontend.key:/etc/apache2/server.key:ro
     environment:
-      - ENV_DOCKER_REGISTRY_HOST=127.0.0.1
+      - ENV_DOCKER_REGISTRY_HOST=8.141.145.204
       - ENV_DOCKER_REGISTRY_PORT=8150

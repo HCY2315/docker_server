@@ -15,7 +15,7 @@ http:
     X-Content-Type-Options: [nosniff]
 auth:
   htpasswd:
-    realm: zhixueyun
+    realm: admin
     path: /auth/httpasswd_storage/htpasswd
 health:
   storagedriver:
