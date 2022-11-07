@@ -1,7 +1,12 @@
 version: "3"
-
+networks:
+  pub:
+    external: true
 services:
     registry:
+        networks:
+           pub:
+              ipv4_address: 172.20.10.141
         image: registry:2
         container_name: "docker-registry"
         restart: always

@@ -41,7 +41,10 @@
 ## 14、deployment
 172.20.10.131-140/16
 
-## 13、hostByTesting
+## 15、docker registryt
+172.20.10.141-150/16
+
+## 16、hostByTesting
 172.20.0.1-253/16
 
 
