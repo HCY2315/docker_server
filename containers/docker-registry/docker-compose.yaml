@@ -1,12 +1,17 @@
 version: "3"
-
+networks:
+  pub:
+    external: true
 services:
     registry:
+        networks:
+           pub:
+              ipv4_address: 172.20.10.141
         image: registry:2
         container_name: "docker-registry"
         restart: always
         ports:
-            - 8150:5000
+            - 5000:5000
         volumes:
             - ./data:/var/lib/registry
             - ./auth:/auth

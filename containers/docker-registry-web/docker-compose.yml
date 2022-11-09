@@ -1,6 +1,12 @@
 version: '3.1'
+networks:
+  pub:
+    external: true
 services:
   frontend:
+    networks:
+       pub:
+          ipv4_address: 172.20.10.142
     container_name: docker-registry-web
     image: konradkleine/docker-registry-frontend:v2
     restart: always
@@ -10,5 +16,5 @@ services:
       #- ./certs/frontend.crt:/etc/apache2/server.crt:ro
       #- ./certs/frontend.key:/etc/apache2/server.key:ro
     environment:
-      - ENV_DOCKER_REGISTRY_HOST=127.0.0.1
-      - ENV_DOCKER_REGISTRY_PORT=8150
+      - ENV_DOCKER_REGISTRY_HOST=172.20.10.141
+      - ENV_DOCKER_REGISTRY_PORT=5000
