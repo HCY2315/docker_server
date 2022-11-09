@@ -7,9 +7,9 @@ services:
       - $PWD/.ssh:/root/.ssh
       - /etc/localtime:/etc/localtime
     ports:
-      - "8080:8080"
+      - "8081:8080"
     expose:
-      - "8080"
+      - "8081"
       - "50000"
     privileged: true
     user: root
