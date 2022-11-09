@@ -22,3 +22,4 @@ influxdb/chronograf/*
 deployment/pkg
 influxdb/chronograf
 etcd/bin/config/etcd-data/*
+containers/docker-registry/data
