@@ -7,7 +7,7 @@ services:
   image: nginx
   restart: always
   ports:
-    -  80:80
+    -  8071:80
   volumes:
     - $PWD/html:/usr/share/nginx/html
     - $PWD/conf:/etc/nginx/conf.d/

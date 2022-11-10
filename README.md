@@ -44,10 +44,7 @@
 ## 15、docker registryt
 172.20.10.141-150/16
 
-## 15、docker registryt
-172.20.10.141-150/16
-
-## 、hostByTesting
+## other：hostByTesting
 172.20.0.1-253/16
 
 
