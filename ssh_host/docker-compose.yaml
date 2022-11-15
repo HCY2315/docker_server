@@ -17,3 +17,59 @@ services:
       networks:
          pub:
             ipv4_address: 172.20.0.2
+   c3:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.3
+   c4:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.4
+   c5:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.5
+   c6:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.6
+   c7:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.7
+   c8:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.8
+   c9:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.9
+   c10:
+      image: houchaoyue/host:latest
+      restart: always
+      tty: true
+      networks:
+         pub:
+            ipv4_address: 172.20.0.10
