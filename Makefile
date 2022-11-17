@@ -6,8 +6,8 @@ GO_LDFLAGS = -ldflags " -w"
 VERSION = $(shell date -u +v%Y%m%d)-$(shell git describe --tags --always --dirty)
 BIN_LABELS = ${PROJECT}_$(VERSION) 
 WIN_LABELS = ${PROJECT}_$(VERSION).exe
-DOCKER_IMAGE_NAME = ${PROJECT}:$(VERSION)
-DOCKER_REMOVE_IMAGE_NAME = registry.iso.com:8150/${PROJECT}:latest
+DOCKER_IMAGE_NAME = registry.iso.com:8150/${PROJECT}:$(VERSION)
+DOCKER_REMOVE_IMAGE_NAME = registry.iso.com:8150/${PROJECT}/${PROJECT}:latest
 
 build-lux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build ${GO_LDFLAGS} -o ${BIN_LABELS} main.go
