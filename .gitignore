@@ -19,3 +19,4 @@ etcd/bin/logs
 etcd/etcd-data
 jenkins/jenkins_home
 jenkins/.ssh
+nextcloud/html
