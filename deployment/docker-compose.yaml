@@ -11,4 +11,4 @@ services:
         - $PWD/pkg:/mnt
       networks:
          pub:
-            ipv4_address: 172.20.10.131
+            ipv4_address: 172.20.20.1
