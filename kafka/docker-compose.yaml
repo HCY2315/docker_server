@@ -7,7 +7,6 @@ services:
     networks:
      pub:
         ipv4_address: 172.20.10.131
-        
   kafka:
     image: wurstmeister/kafka
     depends_on:
