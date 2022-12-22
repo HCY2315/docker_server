@@ -9,7 +9,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - $PWD/redis-data/:/data/
+      - ../../docker-volume/redis/redis-data/:/data/
     command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
         #    command: ["redis-server"]
     networks:
