@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: insur132
     ports:
-      - 3306:3306
+      - 33306:3306
     volumes:
       - '../../docker-volume/mysql/lib:/var/lib/mysql'
       - '../../docker-volume/mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysql.cnf'

@@ -10,9 +10,9 @@ services:
     image:
     image: quay.io/coreos/etcd:v3.3.12
     container_name: etcd-v3
-    #    ports:
-    #      - 2379:2379
-    #      - 2380:2380
+    ports:
+      - 32379:2379
+      - 32380:2380
     environment:
       ETCDCTL_API: 3
     volumes:
@@ -45,10 +45,10 @@ services:
     volumes:
       - ./bin/config/cfg.toml:/app/config/cfg.toml
       - ./bin/logs:/app/logs
-        #    ports:
-        #      - "40280:10280"
-        #    depends_on:
-        #      - etcd
+    ports:
+      - "30280:10280"
+    depends_on:
+      - etcd
     networks:
        pub:
           ipv4_address: 172.20.10.122
