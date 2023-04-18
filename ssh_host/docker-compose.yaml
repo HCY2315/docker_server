@@ -7,6 +7,8 @@ services:
       image: houchaoyue/host:latest
       restart: always
       tty: true
+      volumes:
+        - '../../docker-volume/ssh_host/:/data'
       networks:
          pub:
             ipv4_address: 172.20.0.1
@@ -14,6 +16,8 @@ services:
       image: houchaoyue/host:latest
       restart: always
       tty: true
+      volumes:
+        - '../../docker-volume/ssh_host/:/data'
       networks:
          pub:
             ipv4_address: 172.20.0.2

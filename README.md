@@ -40,9 +40,14 @@
 
 ## 14、kafka
 172.20.10.131-172.20.10.140/16
+131:zookeper
+132:kafka
 
 ## 15、docker registryt
 172.20.10.141-150/16
+
+## 16、starRocks
+172.20.10.151-150/16
 
 ## other：hostByTesting
 172.20.0.1-253/16
