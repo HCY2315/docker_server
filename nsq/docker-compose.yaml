@@ -1,4 +1,7 @@
 version: '2'
+networks:
+  pub:
+    external: true
 services:
   nsqlookupd:
     image: nsqio/nsq
@@ -8,6 +11,9 @@ services:
       - 4161:4161
     environment:
       HOSTNAME: 127.0.0.1
+    networks:
+       pub:
+          ipv4_address: 172.20.10.171
   nsqd:
     image: nsqio/nsq
     command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
@@ -18,6 +24,9 @@ services:
       - 4151:4151
     environment:
       HOSTNAME: 127.0.0.1
+    networks:
+       pub:
+          ipv4_address: 172.20.10.172
   nsqadmin:
     image: nsqio/nsq
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
