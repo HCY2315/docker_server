@@ -7,7 +7,6 @@ services:
     networks:
      pub:
         ipv4_address: 172.20.10.131
-
   kafka:
     image: wurstmeister/kafka
     depends_on:
@@ -21,12 +20,16 @@ services:
       KAFKA_BROKER_ID: 5
       KAFKA_ZOOKEEPER_CONNECT: 172.20.10.131:2181
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092  #宿主机监听端口
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.20.10.132:9092  #宿主机监听端口
 
   kafka-manager:
     image: sheepkiller/kafka-manager
     ports:
+<<<<<<< HEAD
       - "39000:9000"
+=======
+      - "9000:9000"
+>>>>>>> master
     environment:
       ZK_HOSTS: 172.20.10.131:2181
     networks:

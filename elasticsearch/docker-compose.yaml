@@ -1,0 +1,23 @@
+# docker run --name elasticsearch --restart always -d -p 9200:9200 -p 9300:9300 -v
+# /data/es:/usr/share/elasticsearch/data -e "discovery.type=single-node" -e
+# ES_JAVA_OPTS="-Xms4096m -Xmx4096m" elasticsearch:7.14.2
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+  es:
+    image: elasticsearch:7.14.2
+    restart: always
+    environment:
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xms4096m -Xmx4096m"
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - '../../docker-volume/elasticsearch/data:/usr/share/elasticsearch/data'
+      - '../../docker-volume/elasticsearch/logs:/usr/share/elasticsearch/logs/'
+    networks:
+       pub:
+          ipv4_address: 172.20.10.191

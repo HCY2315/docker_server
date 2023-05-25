@@ -1,0 +1,18 @@
+version: '2'
+networks:
+  pub:
+    external: true
+services:
+   starRocks:
+      image: starrocks/allin1-ubuntu:2.5.4
+      restart: always
+      volumes:
+         - '../../docker-volume/starRocks/m2:/root/.m2'
+         - '../../docker-volume/starRocks/smith/starrocks:/root/starrocks'
+      ports:
+         - 9030:9030
+         - 8030:8030
+         - 8040:8040
+      networks:
+         pub:
+            ipv4_address: 172.20.10.151

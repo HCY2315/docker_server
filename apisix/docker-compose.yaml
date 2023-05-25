@@ -1,0 +1,46 @@
+curl http://127.0.0.1:9180/apisix/admin/routes/get-ip0?api_key=${api_key} -X PATCH -d '
+{
+    "plugins": {
+        "ip-restriction": {
+            "whitelist": [
+                "10.18.42.243"
+            ]
+        }
+    }
+}'
+
+
+curl http://127.0.0.1:9180/apisix/admin/routes/get-ip0?api_key=${api_key} -X PUT -d '
+{
+    "uri": "/ip",
+    "plugins": {},
+    "upstream": {
+        "type": "roundrobin",
+        "nodes": {
+            "127.0.0.1:1980": 1
+        }
+    }
+}'
+
+
+创建上游路由
+curl http://127.0.0.1:9180/apisix/admin/upstreams/test?api_key=${api_key}  -i -X PUT -d '
+{
+    "type":"roundrobin",
+    "nodes":{
+      "10.18.101.53:80": 1
+    }
+}'
+
+curl http://127.0.0.1:9180/apisix/admin/upstreams/test?api_key=${api_key}  -i -X PATCH -d '
+{
+    "nodes": {
+        "127.0.0.1:1981": 1
+    }
+}'
+
+curl http://127.0.0.1:9180/apisix/admin/upstreams/test?api_key=${api_key} -X PUT -d '
+{
+    "uri": "/ip",
+    "upstream_id": te s
+}'
