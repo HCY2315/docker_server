@@ -1,0 +1,27 @@
+version: "3.7"
+networks:
+  pub:
+    external: true
+services:
+  minio:
+    image: "quay.io/minio/minio:latest"
+    ports:
+        - "9000:9000"
+        - "9001:9001"
+    volumes:
+        - "../../docker-volume/minio/data1:/data1"
+        - "../../docker-volume/minio/data2:/data2"
+    command: server --console-address ":9001" http://minio/data{1...2}
+    environment:
+        - MINIO_ROOT_USER=admin
+        - MINIO_ROOT_PASSWORD=insur132
+        - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
+        - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+        interval: 30s
+        timeout: 20s
+        retries: 3
+    networks:
+      pub:
+        ipv4_address: 172.20.10.211

@@ -36,3 +36,6 @@ services:
       - 4171:4171
     environment:
       HOSTNAME: 127.0.0.1
+    networks:
+       pub:
+          ipv4_address: 172.20.10.173
